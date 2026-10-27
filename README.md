@@ -45,8 +45,9 @@ Depois, cada app no seu diretório: `docker compose up -d --build`.
 
 ## Cloudflare
 
-1. **Zero Trust → Networks → Tunnels → Create a tunnel** (Cloudflared). O token é a string
-   depois de `--token` no comando de instalação; vai para `TUNNEL_TOKEN` no `.env`.
+1. **Networking → Tunnels → Create a tunnel** (Cloudflared), no dashboard principal — não
+   precisa do Zero Trust. O token é a string depois de `--token` no comando de instalação;
+   vai para `TUNNEL_TOKEN` no `.env`.
 2. **Public Hostname**: um por app, todos com tipo `HTTP` e URL `edge:80`. Se já existir
    registro A/AAAA com o mesmo nome no DNS, apague antes — o túnel cria um CNAME.
 3. **SSL/TLS → Overview**: Full (strict).
