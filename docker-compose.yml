@@ -1,0 +1,31 @@
+services:
+  edge:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./sites:/etc/caddy/sites:ro
+      - edge_data:/data
+      - edge_config:/config
+    networks:
+      - web
+
+  tunnel:
+    image: cloudflare/cloudflared:2026.10.0
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN:?defina no .env}
+    depends_on:
+      - edge
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
+
+volumes:
+  edge_data:
+  edge_config:

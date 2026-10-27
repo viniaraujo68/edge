@@ -1,0 +1,6 @@
+http://{$RASTRO_DOMAIN} {
+	encode gzip
+	reverse_proxy rastro-frontend:80 {
+		header_up X-Forwarded-For {client_ip}
+	}
+}

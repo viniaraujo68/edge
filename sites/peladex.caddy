@@ -1,0 +1,13 @@
+http://{$PELADEX_DOMAIN} {
+	encode gzip
+	handle /api/* {
+		reverse_proxy peladex-backend:8000 {
+			header_up X-Forwarded-For {client_ip}
+		}
+	}
+	handle {
+		reverse_proxy peladex-frontend:3000 {
+			header_up X-Forwarded-For {client_ip}
+		}
+	}
+}
