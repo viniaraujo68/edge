@@ -8,7 +8,8 @@ nenhuma — o origin não é alcançável pelo IP, e o visitante só fala HTTPS 
 Visitante ─HTTPS→ Cloudflare ─túnel→ cloudflared → edge (Caddy :80, rede web)
     ├── peladex.rastrovin.org  → /api/* → peladex-backend:8000 · / → peladex-frontend:3000
     ├── pokerdex.rastrovin.org → /api/* → pokerdex-backend:8000 · / → pokerdex-frontend:3000
-    └── rastrovin.org          → rastro-frontend:80
+    ├── rastrovin.org          → rastro-frontend:80
+    └── azeitona.rastrovin.org → azeitona-web:3000
 ```
 
 | App | Repo | Bloco |
@@ -16,10 +17,10 @@ Visitante ─HTTPS→ Cloudflare ─túnel→ cloudflared → edge (Caddy :80, r
 | Peladex | [viniaraujo68/peladex](https://github.com/viniaraujo68/peladex) | `sites/peladex.caddy` |
 | Pokerdex | [viniaraujo68/pokerdex-v3](https://github.com/viniaraujo68/pokerdex-v3) | `sites/pokerdex.caddy` |
 | Rastro | [viniaraujo68/rastro](https://github.com/viniaraujo68/rastro) | `sites/rastro.caddy` |
-| Azeitona | — (ainda fora do ar) | `sites/azeitona.caddy`: espera os aliases `azeitona-backend:8000` e `azeitona-frontend:3000` |
+| Azeitona | [laurabpdearaujo-arch/organize](https://github.com/laurabpdearaujo-arch/organize) | `sites/azeitona.caddy` |
 
 Cada app sobe o próprio `docker compose` e entra na rede externa `web` com aliases
-(`peladex-backend`, `pokerdex-frontend`, `rastro-frontend`…). O edge só conhece esses nomes.
+(`peladex-backend`, `pokerdex-frontend`, `rastro-frontend`, `azeitona-web`…). O edge só conhece esses nomes.
 
 ## IP do visitante
 
