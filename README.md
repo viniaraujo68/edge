@@ -16,6 +16,7 @@ Visitante ─HTTPS→ Cloudflare ─túnel→ cloudflared → edge (Caddy :80, r
 | Peladex | [viniaraujo68/peladex](https://github.com/viniaraujo68/peladex) | `sites/peladex.caddy` |
 | Pokerdex | [viniaraujo68/pokerdex-v3](https://github.com/viniaraujo68/pokerdex-v3) | `sites/pokerdex.caddy` |
 | Rastro | [viniaraujo68/rastro](https://github.com/viniaraujo68/rastro) | `sites/rastro.caddy` |
+| Azeitona | — (ainda fora do ar) | `sites/azeitona.caddy`: espera os aliases `azeitona-backend:8000` e `azeitona-frontend:3000` |
 
 Cada app sobe o próprio `docker compose` e entra na rede externa `web` com aliases
 (`peladex-backend`, `pokerdex-frontend`, `rastro-frontend`…). O edge só conhece esses nomes.
